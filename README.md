@@ -22,7 +22,9 @@ management port.
 
 ## upstream ##
 
-    wget http://ftp.nl.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/netboot.tar.gz
+```
+wget http://ftp.nl.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/netboot.tar.gz
+```
 
 review changes, commit and merge to other branches...
 
@@ -33,15 +35,17 @@ has to be done at least every time we sync with upstream.
 
 Example:
 
-    cd debian-installer/amd64
-    mkdir tmp
-	cd tmp/
-	ar -p firmware-bnx2_0.28+squeeze1_all.deb data.tar.gz | tar -zxf -
-	pax -x sv4cpio -s '%lib%/lib%' -w lib | gzip -c >bnx2-fw.cpio.gz
-	cat bnx2-fw.cpio.gz >> ../initrd.gz
-	cd ..
-	rm -rf tmp
-	cowsay yay
+```
+cd debian-installer/amd64
+mkdir tmp
+cd tmp/
+ar -p firmware-bnx2_0.28+squeeze1_all.deb data.tar.gz | tar -zxf -
+pax -x sv4cpio -s '%lib%/lib%' -w lib | gzip -c >bnx2-fw.cpio.gz
+cat bnx2-fw.cpio.gz >> ../initrd.gz
+cd ..
+rm -rf tmp
+cowsay yay
+```
 
 As seen on: http://wiki.debian.org/DebianInstaller/NetbootFirmware
 
@@ -53,18 +57,22 @@ System Rescue CD: http://www.sysresccd.org/
 
 For documentation, also see:
 
-    http://www.sysresccd.org/Sysresccd-manual-en_PXE_network_booting
-    http://www.sysresccd.org/Sysresccd-manual-en_Booting_the_CD-ROM#Network_auto-configuration_and_remote_access
+```
+http://www.sysresccd.org/Sysresccd-manual-en_PXE_network_booting
+http://www.sysresccd.org/Sysresccd-manual-en_Booting_the_CD-ROM#Network_auto-configuration_and_remote_access
+```
 
 Howto: dowload a system rescue cd, mount the iso and copy some files...
 
-    # mount -o loop systemrescuecd-x86-x.y.z.iso /mnt/iso/
+```
+# mount -o loop systemrescuecd-x86-x.y.z.iso /mnt/iso/
 
-    $ cd sysrcd
-    $ cp /mnt/iso/sysrcd.md5 .
-    $ cp /mnt/iso/sysrcd.dat .
-    $ cp /mnt/iso/isolinux/rescue64 .
-    $ cp /mnt/iso/isolinux/initram.igz .
+$ cd sysrcd
+$ cp /mnt/iso/sysrcd.md5 .
+$ cp /mnt/iso/sysrcd.dat .
+$ cp /mnt/iso/isolinux/rescue64 .
+$ cp /mnt/iso/isolinux/initram.igz .
+```
 
 voila! (don't forget to enable `nf_conntrack_tftp`)
 
