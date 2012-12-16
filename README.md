@@ -126,8 +126,8 @@ pxelinux.cfg/
 System Rescue cd: http://www.sysresccd.org/
 
 For documentation, also see:
- * http://www.sysresccd.org/Sysresccd-manual-en\_PXE\_network\_booting
- * http://www.sysresccd.org/Sysresccd-manual-en\_Booting\_the\_CD-ROM#Network\_auto-configuration\_and\_remote\_access
+ * [System rescue cd: PXE network booting](http://www.sysresccd.org/Sysresccd-manual-en_PXE_network_booting)
+ * [System rescue cd: Bootind the cd-rom](http://www.sysresccd.org/Sysresccd-manual-en_Booting_the_CD-ROM#Network_auto-configuration_and_remote_access)
 
 So, dowload a system rescue cd and mount the iso using e.g. `mount -o loop
 systemrescuecd-x86-x.y.z.iso /mnt/iso/`. Now, copy sysrcd.dat and sysrcd.md5
