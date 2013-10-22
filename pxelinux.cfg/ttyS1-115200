@@ -23,6 +23,9 @@ label sysrcd
 	kernel sysrcd/rescue64
 	append initrd=sysrcd/initram.igz dodhcp netboot=http://tftp/sysrcd/sysrcd.dat -- console=ttyS1,115200n8
 
+label memtest (no serial console)
+	kernel memtest/memtest
+
 label reboot
 	com32 reboot.c32
 
