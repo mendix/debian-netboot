@@ -20,6 +20,13 @@ version.info is also nice, by the way... Put the three files somewhere in your
 tftp server location, e.g:
 
 ```
+tar xfz netboot.tar.gz ./debian-installer/amd64/linux
+tar xfz netboot.tar.gz ./debian-installer/amd64/initrd.gz
+tar xfz netboot.tar.gz ./version.info
+mv debian-installer/amd64/* version.info wheezy/
+rmdir debian-installer/amd64/ debian-installer/
+rm netboot.tar.gz
+
 example.mendix.net:/srv/tftp 3-$ tree wheezy/
 wheezy/
 ├── initrd.gz
@@ -50,7 +57,7 @@ Example:
 cd wheezy
 mkdir tmp
 cd tmp/
-wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_0.36_all.deb
+wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_0.36+wheezy.1_all.deb
 ar -p firmware-bnx2* data.tar.gz | tar -zxf -
 pax -x sv4cpio -s '%lib%/lib%' -w lib | gzip -c >> ../initrd.gz
 cd ..
