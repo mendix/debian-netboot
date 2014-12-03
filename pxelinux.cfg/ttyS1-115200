@@ -5,7 +5,7 @@ menu title ttyS1,115200n8
 
 label jessie
 	kernel jessie/linux
-	append priority=low vga=788 initrd=jessie/initrd.gz -- console=ttyS1,115200n8
+	append priority=low vga=788 initrd=jessie/initrd.gz --- console=ttyS1,115200n8
 
 label wheezy
 	kernel wheezy/linux
