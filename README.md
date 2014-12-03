@@ -58,7 +58,7 @@ cd wheezy
 mkdir tmp
 cd tmp/
 wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_0.36+wheezy.1_all.deb
-ar -p firmware-bnx2* data.tar.gz | tar -zxf -
+dpkg-deb -x *.deb ./
 pax -x sv4cpio -s '%lib%/lib%' -w lib | gzip -c >> ../initrd.gz
 cd ..
 rm -rf tmp
