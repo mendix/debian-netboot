@@ -7,10 +7,6 @@ label wheezy
 	kernel wheezy/linux
 	append priority=low vga=788 initrd=wheezy/initrd.gz -- console=ttyS0,9600n8
 
-label squeeze
-	kernel squeeze/linux
-	append priority=low vga=788 initrd=squeeze/initrd.gz -- console=ttyS0,9600n8
-
 label sysrcd
 	kernel sysrcd/rescue64
 	append initrd=sysrcd/initram.igz dodhcp netboot=http://tftp/sysrcd/sysrcd.dat -- console=ttyS0,9600n8

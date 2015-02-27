@@ -19,14 +19,6 @@ label wheezy preseed - dl360g8v2 (eth3)
 	kernel wheezy/linux
 	append priority=low vga=788 initrd=wheezy/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./wheezy-dl360g8v2.cfg interface=eth3 -- console=ttyS1,115200n8
 
-label squeeze
-	kernel squeeze/linux
-	append priority=low vga=788 initrd=squeeze/initrd.gz -- console=ttyS1,115200n8
-
-label squeeze preseed
-	kernel squeeze/linux
-	append priority=low vga=788 initrd=squeeze/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./squeeze.cfg interface=auto -- console=ttyS1,115200n8
-
 label sysrcd
 	kernel sysrcd/rescue64
 	append initrd=sysrcd/initram.igz dodhcp netboot=http://tftp/sysrcd/sysrcd.dat -- console=ttyS1,115200n8
