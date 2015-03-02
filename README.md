@@ -9,10 +9,10 @@ repository is simply cloned on all tftp server locations at /srv/tftp.
 
 ## Debian Installer ##
 
-Get the netboot.tar.gz of your preferred Debian release, e.g. wheezy:
+Get the netboot.tar.gz of your preferred Debian release, e.g. jessie:
 
 ```
-wget http://ftp.nl.debian.org/debian/dists/wheezy/main/installer-amd64/current/images/netboot/netboot.tar.gz
+wget http://ftp.nl.debian.org/debian/dists/jessie/main/installer-amd64/current/images/netboot/netboot.tar.gz
 ```
 
 From this archive, we actually only need the initrd.gz and linux files.  Keeping
@@ -23,20 +23,20 @@ tftp server location, e.g:
 tar xfz netboot.tar.gz ./debian-installer/amd64/linux
 tar xfz netboot.tar.gz ./debian-installer/amd64/initrd.gz
 tar xfz netboot.tar.gz ./version.info
-mv debian-installer/amd64/* version.info wheezy/
+mv debian-installer/amd64/* version.info jessie/
 rmdir debian-installer/amd64/ debian-installer/
 rm netboot.tar.gz
 
-example.mendix.net:/srv/tftp 3-$ tree wheezy/
-wheezy/
+example.mendix.net:/srv/tftp 3-$ tree jessie/
+jessie/
 ├── initrd.gz
 ├── linux
 └── version.info
 
 0 directories, 3 files
-example.mendix.net:/srv/tftp 3-$ cat wheezy/version.info
-Debian version:  7.0 (wheezy)
-Installer build: 20121114
+example.mendix.net:/srv/tftp 3-$ cat jessie/version.info
+Debian version:  8 (jessie)
+Installer build: 20150107
 ```
 
 ## syslinux ##
@@ -54,10 +54,10 @@ done at least every time we sync installer files with upstream.
 Example:
 
 ```
-cd wheezy
+cd jessie
 mkdir tmp
 cd tmp/
-wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_0.36+wheezy.1_all.deb
+wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_0.43_all.deb
 dpkg-deb -x *.deb ./
 pax -x sv4cpio -s '%lib%/lib%' -w lib | gzip -c >> ../initrd.gz
 cd ..
