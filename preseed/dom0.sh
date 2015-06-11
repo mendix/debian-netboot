@@ -1,12 +1,12 @@
 #!/bin/sh
 
-in-target /usr/bin/install -d -m 700 -o root -g root /root/.ssh
-/bin/cat << EOF > /target/root/.ssh/authorized_keys
+/usr/bin/install -d -m 700 -o root -g root /root/.ssh
+/bin/cat << EOF > /root/.ssh/authorized_keys
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxgPiIpPIrimguQy1wHuALvZXWymsuVsOwys8Ap0mXieKwdG/xkSzJYurAF+Eix14sKNzCGU4CrJMV/N1CHuokNC4Vjexz/DbeZVRBvtUd2HRO7Jp1C7JQW5JIdFSHDZT+Pq0L5CCRrdPdmIiLsz1Grz9MlYXRaKHwaLY6KMyWreuaV7AGn4rqU2dz/talQVBAEDgs46VsxryrkNfIcN/5534xFAaIuMOzPlQq84ZQSM4KZB7oXfLRnd1EIoeArlVh8Y2yUrR+vY4Grkw+ZxDIX7qpPc31NNw1WGNEM4ku+c2z+aJEVeD5UsymenOfM9LIArGM8CVd55p01gCkBmdcQ== hans.van.kranenburg@mendix.nl
 ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQB3PPRvASg+bmgfsqk+mTUicI3XE+VzJOKizwVZQpn95aXTyzVEEskfppebnyMGPaOtAXM6DRkNrUM0KqbyPOfQ4AFiR1cf31n/pcXD0TcojI4Fbi5mO9DKI4mc38NH1zvq+KBPfXfo6GubGAEzcK2remnArAQpO11KwUKA+TCOjvNN0/n0WN0sTsRq0Jet64hG7i2RScZeErk/EZF8J/6W3uUs1uTbD38UTT49Fd27BNQXU+D3RSNrJf5YNFEFS6vn9O9PqOjInaLEy3z5w3XKpjRvy2IoMn7hSyfmR7acwfwaP6NWq71sttFS4HVgff4ApGHei7eAiuyLrROiSgn9 frank.baalbergen@mendix.com
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoDWQIPiSqMjE81ih4zgQCchiohzvG4bsGl+ecW4tNjRU6f0luFONzS/rPrWhXa7TA2pwcforjLdC0L7nv462TdnI+NcaJMf1jr5v9zDs/6UK4WOVl6/PA3zb38zHhRH6nY1l1VWhO1X7JbHldACJVEGOTA5h4lCY4rgi9Nz3uB012DB+/emnlc0AZ/EQqDcGkDMk/5BMHtFSVe+YKP1+68otw5iPv3ImxeuNj0oDQCFyfWVnUmGFmcrtZPv4v9DxmydjaB0etrK0ErYj51BTNETVOsADScwZ8PoCsfsL3hbYGR8ge5rKTMihc5SibEIjjUwxUswWSdVmh6Zrbwv8j xiwen.cheng@mendix.com
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5YfETN/azB5MbYDuMjBP2q2Sjn8r2f0jgnGh/k/9ylIqja3gcw2S2aHgmIBFACDZK5oCFFK3qWmKSiTiuStrOSN5IFoxm6kRwn7lBMpRly0FrKhvGdxR3wMjyYH4AgpKhDJwPh80EcjQX7852ZLpH3MVuMB0XeAe9yl9Wzo0w5LaG3+cWVxpf3jlLFTJoUK2DK0p63QkBaq5J0uv75PwClBwFuIGn4Fq12es0VVyGIAZqGZGQmuv2MdvPjMTgy7ExwpSEg2Xs/7LqLfskd5dmiDgatCLWPktzk0GNlDl7gJ7vnlV5f1HYaYZUxhCOCvoxCvrgc4JL9rlh8MdW8njB pim.van.den.berg@mendix.com
 EOF
 
-in-target /bin/echo "exit 1" >> /etc/default/puppet
-in-target /usr/bin/test ! -f /var/lib/puppet/state/agent_disabled.lock || /bin/rm /var/lib/puppet/state/agent_disabled.lock
+/bin/echo "exit 1" >> /etc/default/puppet
+/usr/bin/test ! -f /var/lib/puppet/state/agent_disabled.lock || /bin/rm /var/lib/puppet/state/agent_disabled.lock
