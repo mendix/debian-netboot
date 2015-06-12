@@ -8,5 +8,10 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoDWQIPiSqMjE81ih4zgQCchiohzvG4bsGl+ecW4tN
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5YfETN/azB5MbYDuMjBP2q2Sjn8r2f0jgnGh/k/9ylIqja3gcw2S2aHgmIBFACDZK5oCFFK3qWmKSiTiuStrOSN5IFoxm6kRwn7lBMpRly0FrKhvGdxR3wMjyYH4AgpKhDJwPh80EcjQX7852ZLpH3MVuMB0XeAe9yl9Wzo0w5LaG3+cWVxpf3jlLFTJoUK2DK0p63QkBaq5J0uv75PwClBwFuIGn4Fq12es0VVyGIAZqGZGQmuv2MdvPjMTgy7ExwpSEg2Xs/7LqLfskd5dmiDgatCLWPktzk0GNlDl7gJ7vnlV5f1HYaYZUxhCOCvoxCvrgc4JL9rlh8MdW8njB pim.van.den.berg@mendix.com
 EOF
 
-/bin/echo "exit 1" >> /etc/default/puppet
+if /bin/grep -q ^8 /etc/debian_version
+then
+    /bin/ln -nsf /dev/null /etc/systemd/system/puppet.service
+else
+    /bin/echo "exit 1" >> /etc/default/puppet
+fi
 /usr/bin/test ! -f /var/lib/puppet/state/agent_disabled.lock || /bin/rm /var/lib/puppet/state/agent_disabled.lock
