@@ -57,7 +57,10 @@ Example:
 cd jessie
 mkdir tmp
 cd tmp/
-wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_0.43_all.deb
+# bnx2
+wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_0.44_all.deb
+# bnx2x
+wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2x_0.44_all.deb
 dpkg-deb -x *.deb ./
 pax -x sv4cpio -s '%lib%/lib%' -w lib | gzip -c >> ../initrd.gz
 cd ..
