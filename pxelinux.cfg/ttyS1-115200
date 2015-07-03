@@ -3,10 +3,6 @@ serial 1 115200 0
 default menu.c32
 menu title ttyS1,115200n8
 
-label jessie
-	kernel jessie/linux
-	append priority=low vga=788 initrd=jessie/initrd.gz --- console=ttyS1,115200n8
-
 label jessie preseed
 	kernel jessie/linux
 	append priority=low vga=788 initrd=jessie/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./jessie.cfg interface=auto --- console=ttyS1,115200n8
@@ -15,9 +11,9 @@ label jessie preseed ceph
 	kernel jessie/linux
 	append priority=low vga=788 initrd=jessie/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./jessie-ceph.cfg interface=auto --- console=ttyS1,115200n8
 
-label wheezy
-	kernel wheezy/linux
-	append priority=low vga=788 initrd=wheezy/initrd.gz -- console=ttyS1,115200n8
+label jessie
+	kernel jessie/linux
+	append priority=low vga=788 initrd=jessie/initrd.gz --- console=ttyS1,115200n8
 
 label wheezy preseed
 	kernel wheezy/linux
@@ -26,6 +22,10 @@ label wheezy preseed
 label wheezy preseed - dl360g8v2 (eth3)
 	kernel wheezy/linux
 	append priority=low vga=788 initrd=wheezy/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./wheezy-dl360g8v2.cfg interface=eth3 -- console=ttyS1,115200n8
+
+label wheezy
+	kernel wheezy/linux
+	append priority=low vga=788 initrd=wheezy/initrd.gz -- console=ttyS1,115200n8
 
 label sysrcd
 	kernel sysrcd/rescue64
