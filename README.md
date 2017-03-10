@@ -58,9 +58,9 @@ cd jessie
 mkdir tmp
 cd tmp/
 # bnx2
-wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_20151207-1_all.deb
+wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_20161130-2~bpo8%2B1_all.deb
 # bnx2x
-wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2x_20151207-1_all.deb
+wget http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2x_20161130-2~bpo8%2B1_all.deb
 for deb in firmware-bnx*.deb; do dpkg-deb -x $deb ./; done
 pax -x sv4cpio -s '%lib%/lib%' -w lib | gzip -c >> ../initrd.gz
 cd ..
