@@ -3,11 +3,13 @@ serial 1 115200 0
 default menu.c32
 menu title ttyS1,115200n8
 
-label stretch preseed
+label stretch_preseed
+	menu label stretch preseed
 	kernel stretch/linux
 	append priority=low vga=788 initrd=stretch/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./stretch.cfg interface=auto --- console=ttyS1,115200n8
 
-label stretch preseed ens2f0
+label stretch_preseed_ens2f0
+	menu label stretch preseed ens2f0
 	kernel stretch/linux
 	append priority=low vga=788 initrd=stretch/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./stretch.cfg interface=ens2f0 --- console=ttyS1,115200n8
 
@@ -15,15 +17,18 @@ label stretch
 	kernel stretch/linux
 	append priority=low vga=788 initrd=stretch/initrd.gz --- console=ttyS1,115200n8
 
-label stretch vga
+label stretch_vga
+	menu label stretch vga
 	kernel stretch/linux
 	append priority=low vga=788 initrd=stretch/initrd.gz
 
-label jessie preseed - dl360g8v2 (eth3)
+label jessie_preseed_dl360g8v2_eth3
+	menu label jessie preseed - dl360g8v2 (eth3)
 	kernel jessie/linux
 	append priority=low vga=788 initrd=jessie/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./jessie-dl360g8v2.cfg interface=eth3 --- console=ttyS1,115200n8
 
-label jessie preseed
+label jessie_preseed
+	menu label jessie preseed
 	kernel jessie/linux
 	append priority=low vga=788 initrd=jessie/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./jessie.cfg interface=auto --- console=ttyS1,115200n8
 
@@ -35,11 +40,14 @@ label sysrcd
 	kernel sysrcd/rescue64
 	append initrd=sysrcd/initram.igz dodhcp netboot=http://tftp/sysrcd/sysrcd.dat -- console=ttyS1,115200n8
 
-label memtest (no serial console)
+label memtest
+	menu label memtest (no serial console)
 	kernel memtest/memtest
 
 label reboot
 	com32 reboot.c32
 
 prompt 0
-timeout 0
+timeout 50
+totaltimeout 600
+ontimeout stretch_preseed
