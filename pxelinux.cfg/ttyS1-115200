@@ -8,11 +8,6 @@ label stretch_preseed
 	kernel stretch/linux
 	append priority=low vga=788 initrd=stretch/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./stretch.cfg interface=auto --- console=ttyS1,115200n8
 
-label stretch_preseed_ens2f0
-	menu label stretch preseed ens2f0
-	kernel stretch/linux
-	append priority=low vga=788 initrd=stretch/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./stretch.cfg interface=ens2f0 --- console=ttyS1,115200n8
-
 label stretch
 	kernel stretch/linux
 	append priority=low vga=788 initrd=stretch/initrd.gz --- console=ttyS1,115200n8
@@ -21,11 +16,6 @@ label stretch_vga
 	menu label stretch vga
 	kernel stretch/linux
 	append priority=low vga=788 initrd=stretch/initrd.gz
-
-label jessie_preseed_dl360g8v2_eth3
-	menu label jessie preseed - dl360g8v2 (eth3)
-	kernel jessie/linux
-	append priority=low vga=788 initrd=jessie/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./jessie-dl360g8v2.cfg interface=eth3 --- console=ttyS1,115200n8
 
 label jessie_preseed
 	menu label jessie preseed
