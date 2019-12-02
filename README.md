@@ -9,10 +9,10 @@ repository is simply cloned on all tftp server locations at /srv/tftp.
 
 ## Debian Installer ##
 
-Get the netboot.tar.gz of your preferred Debian release, e.g. stretch:
+Get the netboot.tar.gz of your preferred Debian release, e.g. buster:
 
 ```
-wget http://ftp.nl.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/netboot.tar.gz
+wget http://ftp.nl.debian.org/debian/dists/buster/main/installer-amd64/current/images/netboot/netboot.tar.gz
 ```
 
 From this archive, we actually only need the initrd.gz and linux files.  Keeping
@@ -23,19 +23,19 @@ tftp server location, e.g:
 tar xfz netboot.tar.gz ./debian-installer/amd64/linux
 tar xfz netboot.tar.gz ./debian-installer/amd64/initrd.gz
 tar xfz netboot.tar.gz ./version.info
-mv debian-installer/amd64/* version.info stretch/
+mv debian-installer/amd64/* version.info buster/
 rmdir debian-installer/amd64/ debian-installer/
 rm netboot.tar.gz
 
-example.mendix.net:/srv/tftp 3-$ tree stretch/
-stretch/
+example.mendix.net:/srv/tftp 3-$ tree buster/
+buster/
 ├── initrd.gz
 ├── linux
 └── version.info
 
 0 directories, 3 files
-example.mendix.net:/srv/tftp 3-$ cat stretch/version.info
-Debian version:  8 (stretch)
+example.mendix.net:/srv/tftp 3-$ cat buster/version.info
+Debian version:  8 (buster)
 Installer build: 20150107
 ```
 
@@ -54,13 +54,13 @@ done at least every time we sync installer files with upstream.
 Example:
 
 ```
-cd stretch
+cd buster
 mkdir tmp
 cd tmp/
 # bnx2
-wget 'http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_20190114-2~bpo9+1_all.deb'
+wget 'http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2_20190717-2~bpo10+1_all.deb'
 # bnx2x
-wget 'http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2x_20190114-2~bpo9+1_all.deb'
+wget 'http://ftp.nl.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-bnx2x_20190717-2~bpo10+1_all.deb'
 for deb in firmware-bnx*.deb; do dpkg-deb -x $deb ./; done
 pax -x sv4cpio -s '%lib%/lib%' -w lib | gzip -c >> ../initrd.gz
 cd ..
