@@ -31,17 +31,6 @@ label stretch_vga
 	append priority=low vga=788 initrd=stretch/initrd.gz
 	ipappend 2
 
-label jessie_preseed
-	menu label jessie preseed
-	kernel jessie/linux
-	append priority=low vga=788 initrd=jessie/initrd.gz auto=true priority=critical url=http://tftp/debian-netboot/preseed/./jessie.cfg interface=auto --- console=ttyS1,115200n8
-	ipappend 2
-
-label jessie
-	kernel jessie/linux
-	append priority=low vga=788 initrd=jessie/initrd.gz --- console=ttyS1,115200n8
-	ipappend 2
-
 label sysrcd
 	kernel sysrcd/rescue64
 	append initrd=sysrcd/initram.igz dodhcp netboot=http://tftp/sysrcd/sysrcd.dat -- console=ttyS1,115200n8
